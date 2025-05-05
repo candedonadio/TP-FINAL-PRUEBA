@@ -1,0 +1,54 @@
+<div class="centrado">
+  <h2>Iniciar sesión</h2>
+  <form class='forma' action="/admin/login" method="post">
+    <div class="mb-3">
+      <input type="text" class="form-control" id="inputUser"
+        placeholder="Usuario" name="usuario">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" id="inputPassword"
+        placeholder="Contraseña" name="password">
+    </div>
+
+    {{#if error}}
+    <p class="text-danger">Usuario y/o contraseña incorrectos</p>
+    {{/if}}
+
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+  </form>
+</div>
+<style>
+ html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .centrado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .forma {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+</style>

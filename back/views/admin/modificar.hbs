@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Novedades</title>
+    <style>
+        /* Estilos generales */
+
+        /* Contenedor principal */
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Columna central */
+        .col-6 {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+        }
+
+        /* Título del formulario */
+        h4 {
+            color: #0a4d1c;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #0a4d1c;
+            font-size: 1.5rem;
+        }
+
+        /* Estilos del formulario */
+        form {
+            width: 100%;
+        }
+
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0a7c3e;
+            box-shadow: 0 0 0 3px rgba(10, 124, 62, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Botón de guardar */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #0a7c3e;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #086032;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Efectos adicionales */
+        .form-control::placeholder {
+            color: #aaa;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 50px auto;
+            }
+            
+            .col-6 {
+                padding: 20px;
+            }
+        }
+    </style>
+
+<div class="container" style="margin:50px auto">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h4>Modificar la novedad</h4>
+      <form method="post" action="/admin/novedades/modificar">
+        <input type="hidden" value="{{novedad.id}}" name="id">
+        
+        <div class="form-group">
+          <input type="text" placeholder="Título" value="{{novedad.titulo}}" class="form-control" name="titulo">
+        </div>
+        
+        <div class="form-group">
+          <textarea placeholder="Subtítulo" class="form-control" name="subtitulo">{{novedad.subtitulo}}</textarea>
+        </div>
+        
+        <div class="form-group">
+          <textarea placeholder="Cuerpo" class="form-control" name="cuerpo">{{novedad.cuerpo}}</textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Modificar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{{#if error}}
+<h5>{{message}}</h5>
+{{/if}}
